@@ -6,7 +6,7 @@ import SendIcon from "@mui/icons-material/Send";
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
 
-function ChatArea() {
+function ChatArea({ props }) {
   return (
     <div className="chatArea-container">
         <div className="chatArea-header">
