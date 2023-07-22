@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
+import { useSelector } from "react-redux";
 
 function ChatArea({ props }) {
   const [conversations, setConversations] = useState([
@@ -25,19 +26,20 @@ function ChatArea({ props }) {
     },
   ]);
   var props = conversations[0];
+  const lightTheme = useSelector((state) => state.themeKey);
   return (
-    <div className="chatArea-container">
-        <div className="chatArea-header">
-          <p className="con-icon">{props.name[0]}</p>
-          <div className="header-text">
-            <p className="con-title">{props.name}</p>
+      <div className={"chatArea-container" + (lightTheme ? "" : " dark")}>
+        <div className={"chatArea-header" + (lightTheme ? "" : " dark")}>
+          <p className={"con-icon" + (lightTheme ? "" : " dark")}>{props.name[0]}</p>
+          <div className={"header-text" + (lightTheme ? "" : " dark")}>
+            <p className={"con-title" + (lightTheme ? "" : " dark")}>{props.name}</p>
             <p className="con-timeStamp">{props.timeStamp}</p> 
           </div>
-          <IconButton>
+          <IconButton className={"icon" + (lightTheme ? "" : " dark")}>
             <DeleteIcon />
           </IconButton>
         </div>
-        <div className="messages-container">
+        <div className={"messages-container" + (lightTheme ? "" : " dark")}>
           <MessageOthers />
           <MessageSelf />
           <MessageOthers />
@@ -45,12 +47,12 @@ function ChatArea({ props }) {
           <MessageOthers />
           <MessageSelf />
         </div>
-        <div className="text-input-area">
+        <div className={"text-input-area" + (lightTheme ? "" : " dark")}>
         <input
             placeholder="Type a Message"
-            className="search-box"
+            className={"search-box" + (lightTheme ? "" : " dark")}
         />
-          <IconButton>
+          <IconButton className={"icon" + (lightTheme ? "" : " dark")}>
             <SendIcon />
           </IconButton>
         </div>
