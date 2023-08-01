@@ -7,6 +7,7 @@ app.use(express.json());
 dotenv.config();
 
 const userRoutes = require("./Routes/userRoutes");
+const chatRoutes = require("./Routes/chatRoutes");
 
 const connectDB = async () => {
     try{
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoutes);
+app.use("/chat", chatRoutes);
 
 const PORT = process.env.PORT || 5000;
 
