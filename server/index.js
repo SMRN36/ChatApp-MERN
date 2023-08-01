@@ -3,7 +3,10 @@ const dotenv = require("dotenv");
 const {default: mongoose} = require("mongoose");
 
 const app = express();
+app.use(express.json());
 dotenv.config();
+
+const userRoutes = require("./Routes/userRoutes");
 
 const connectDB = async () => {
     try{
@@ -18,6 +21,8 @@ connectDB();
 app.get("/", (req, res) => {
     res.send("API is running...");
 });
+
+app.use("/user", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
