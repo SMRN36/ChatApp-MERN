@@ -8,6 +8,7 @@ dotenv.config();
 
 const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
+const messageRoutes = require("./Routes/messageRoutes");
 
 const connectDB = async () => {
     try{
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/chat", chatRoutes);
+app.use("/message", messageRoutes);
 
 const PORT = process.env.PORT || 5000;
 
